@@ -1,0 +1,408 @@
+CREATE TABLE `recheio_tech`.`funcionario` (
+  `id_funcionario` INT NOT NULL,
+  `nome` VARCHAR(45) NOT NULL,
+  `cpf` CHAR(11) NOT NULL,
+  `salario` DOUBLE NOT NULL,
+  PRIMARY KEY (`id_funcionario`),
+  UNIQUE INDEX `id_funcionario_UNIQUE` (`id_funcionario` ASC) VISIBLE,
+  UNIQUE INDEX `cpf_UNIQUE` (`cpf` ASC) VISIBLE
+  );
+
+CREATE TABLE `recheio_tech`.`moeda` (
+  `id_moeda` INT NOT NULL,
+  `moeda_nome` VARCHAR(45) NOT NULL,
+  `moeda_simbolo` VARCHAR(20) NOT NULL,
+  PRIMARY KEY (`id_moeda`),
+  UNIQUE INDEX `id_moeda_UNIQUE` (`id_moeda` ASC) VISIBLE,
+  UNIQUE INDEX `moeda_nome` (`moeda_nome` ASC) VISIBLE,
+  UNIQUE INDEX `moeda_simbolo` (`moeda_simbolo` ASC) VISIBLE
+  );
+
+CREATE TABLE `recheio_tech`.`pais` (
+  `id_pais` INT NOT NULL,
+  `nome` VARCHAR(45) NOT NULL,
+  `nacionalidade` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`id_pais`),
+  UNIQUE INDEX `id_pais_UNIQUE` (`id_pais` ASC) VISIBLE,
+  UNIQUE INDEX `nacionalidade_UNIQUE` (`nacionalidade` ASC) VISIBLE
+  );
+  
+ CREATE TABLE `recheio_tech`.`continente` (
+  `id_continente` INT NOT NULL,
+  `nome` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`id_continente`),
+  UNIQUE INDEX `id_continente_UNIQUE` (`id_continente` ASC) VISIBLE,
+  UNIQUE INDEX `nome_UNIQUE` (`nome` ASC) VISIBLE
+  );
+
+CREATE TABLE `recheio_tech`.`cliente` (
+  `id_cliente` INT NOT NULL,
+  `nome` VARCHAR(45) NOT NULL,
+  `sobrenome` VARCHAR(45) NOT NULL,
+  `telefone` VARCHAR(45) NOT NULL,
+  `nascimento` VARCHAR(45) NOT NULL,
+  `cpf` CHAR(11) NOT NULL,
+  `idade` DATETIME NOT NULL,
+  `email` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`id_cliente`),
+  UNIQUE INDEX `id_cliente_UNIQUE` (`id_cliente` ASC) VISIBLE,
+  UNIQUE INDEX `cpf_UNIQUE` (`cpf` ASC) VISIBLE,
+  UNIQUE INDEX `email_UNIQUE` (`email` ASC) VISIBLE,
+  UNIQUE INDEX `nascimento_UNIQUE` (`nascimento` ASC) VISIBLE
+  );
+
+CREATE TABLE `recheio_tech`.`sistema` (
+  `id_sistema` INT NOT NULL,
+  PRIMARY KEY (`id_sistema`),
+  UNIQUE INDEX `id_sistema_UNIQUE` (`id_sistema` ASC) VISIBLE);
+
+CREATE TABLE `recheio_tech`.`loja` (
+  `id_loja` INT NOT NULL,
+  `nome` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`id_loja`)
+  );
+  
+  CREATE TABLE `recheio_tech`.`local` (
+  `id_local` INT NOT NULL,
+  `telefone` VARCHAR(45) NOT NULL,
+  `hora_abertura` DATE NOT NULL,
+  `hora_fechamento` DATE NOT NULL,
+  `longitude` VARCHAR(45) NULL,
+  `latitude` VARCHAR(45) NULL,
+  PRIMARY KEY (`id_local`)
+  );
+  
+  CREATE TABLE `recheio_tech`.`vendedor_marketing` (
+  `id_vendedor_marketing` INT NOT NULL,
+  `nome` VARCHAR(45) NOT NULL,
+  `sobrenome` VARCHAR(45) NOT NULL,
+  `cpf` CHAR(11) NOT NULL,
+  `telefone` VARCHAR(45) BINARY NULL,
+  `idade` DATE NOT NULL,
+  `email` VARCHAR(45) NOT NULL,
+  `nascimento` DATETIME NOT NULL,
+  PRIMARY KEY (`id_vendedor_marketing`),
+  UNIQUE INDEX `id_vendedor_marketing_UNIQUE` (`id_vendedor_marketing` ASC) VISIBLE,
+  UNIQUE INDEX `nascimento_UNIQUE` (`nascimento` ASC) VISIBLE,
+  UNIQUE INDEX `cpf_UNIQUE` (`cpf` ASC) VISIBLE,
+  UNIQUE INDEX `email_UNIQUE` (`email` ASC) VISIBLE
+  );
+
+CREATE TABLE `recheio_tech`.`endereco_local` (
+  `id_endereco_local` INT NOT NULL,
+  `cep` CHAR(9) NOT NULL,
+  `nome_da_rua` VARCHAR(45) NOT NULL,
+  `estado` VARCHAR(45) NOT NULL,
+  `logradouro` VARCHAR(20) NOT NULL,
+  `bairro` VARCHAR(45) NOT NULL,
+  `complemento` VARCHAR(45) NULL,
+  `cidade` VARCHAR(45) NOT NULL,
+  `tipo_logradouro` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`id_endereco_local`),
+  UNIQUE INDEX `id_endereco_local_UNIQUE` (`id_endereco_local` ASC) VISIBLE
+  );
+
+CREATE TABLE `recheio_tech`.`localizacao` (
+  `id_localizacao` INT NOT NULL,
+  `nome_produto` VARCHAR(45) NOT NULL,
+  `descricao_produto` VARCHAR(45) NULL,
+  PRIMARY KEY (`id_localizacao`),
+  UNIQUE INDEX `id_localizacao_UNIQUE` (`id_localizacao` ASC) VISIBLE
+  );
+  
+  CREATE TABLE `recheio_tech`.`endereco_cliente` (
+  `id_endereco` INT NOT NULL,
+  `cep` CHAR(9) NOT NULL,
+  `nome_da_rua` VARCHAR(45) NOT NULL,
+  `estado` VARCHAR(45) NOT NULL,
+  `logradouro` VARCHAR(20) NOT NULL,
+  `bairro` VARCHAR(45) NOT NULL,
+  `complemento` VARCHAR(45) NULL,
+  `cidade` VARCHAR(45) NOT NULL,
+  `tipo_logradouro` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`id_endereco`),
+  UNIQUE INDEX `id_endereco_cliente_UNIQUE` (`id_endereco` ASC) VISIBLE
+  );
+  
+  CREATE TABLE `recheio_tech`.`categoria` (
+  `id_categoria` INT NOT NULL,
+  `tipos_categoria` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`id_categoria`)
+  );
+  
+  CREATE TABLE `recheio_tech`.`produto` (
+  `id_produto` INT NOT NULL,
+  `status` VARCHAR(45) NOT NULL,
+  `fornecedor` VARCHAR(45) NOT NULL,
+  `uri` VARCHAR(45) NOT NULL,
+  `peso` FLOAT NOT NULL,
+  `preco_minimo` FLOAT NOT NULL,
+  `esta_disponivel` VARCHAR(45) NOT NULL,
+  `preco_padrao` FLOAT NOT NULL,
+  `categoria` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`id_produto`),
+  UNIQUE INDEX `id_produto_UNIQUE` (`id_produto` ASC) VISIBLE,
+  UNIQUE INDEX `id_categoria_UNIQUE` (`categoria` ASC) VISIBLE
+  );
+
+CREATE TABLE `recheio_tech`.`pedido` (
+  `id_pedido` INT NOT NULL,
+  `valor_total` FLOAT NOT NULL,
+  `frete` FLOAT NOT NULL,
+  `cod_promocional` VARCHAR(45) NULL,
+  PRIMARY KEY (`id_pedido`),
+  UNIQUE INDEX `id_pedido_UNIQUE` (`id_pedido` ASC) VISIBLE
+  );
+  
+  CREATE TABLE `recheio_tech`.`item_de_vendas` (
+  `id_item_de_vendas` INT NOT NULL,
+  `quantidade` INT NOT NULL,
+  `preco` FLOAT NOT NULL,
+  `subtotal` FLOAT NULL,
+  `item_de_vendascol` VARCHAR(45) NULL,
+  PRIMARY KEY (`id_item_de_vendas`)
+  );
+  
+  CREATE TABLE `recheio_tech`.`modo_de_envio` (
+  `id_modo_de_envio` INT NOT NULL,
+  `sedex` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`id_modo_de_envio`)
+  );
+  
+  CREATE TABLE `recheio_tech`.`forma_pgto` (
+  `id_forma_pgto` INT NOT NULL,
+  `credito` VARCHAR(45) NOT NULL,
+  `debito` VARCHAR(45) NOT NULL,
+  `pix` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`id_forma_pgto`),
+  UNIQUE INDEX `id_forma_pgto_UNIQUE` (`id_forma_pgto` ASC) VISIBLE
+  );
+  
+  CREATE TABLE `recheio_tech`.`salgadeiro` (
+  `id_salgadeiro` INT NOT NULL,
+  `nome` VARCHAR(45) NOT NULL,
+  `idade` VARCHAR(45) NOT NULL,
+  `cpf` INT NOT NULL,
+  PRIMARY KEY (`id_salgadeiro`),
+  UNIQUE INDEX `cpf_UNIQUE` (`cpf` ASC) VISIBLE
+  );
+  
+  CREATE TABLE `recheio_tech`.`cargo` (
+  `id_cargo` INT NOT NULL,
+  `titulo` VARCHAR(45) NULL,
+  `salario_max` VARCHAR(45) NULL,
+  `salario_min` VARCHAR(45) NULL,
+  PRIMARY KEY (`id_cargo`)
+  );
+  
+  CREATE TABLE `recheio_tech`.`historico_de_emprego` (
+  `id_historico_de_emprego` INT NOT NULL,
+  `data_inicio` DATETIME NOT NULL,
+  `data_fim` DATETIME NULL,
+  PRIMARY KEY (`id_historico_de_emprego`)
+  );
+  
+  CREATE TABLE `recheio_tech`.`catalogo_produto` (
+  `id_catalogo_produto` INT NOT NULL,
+  PRIMARY KEY (`id_catalogo_produto`),
+  UNIQUE INDEX `id_catalogo_produto_UNIQUE` (`id_catalogo_produto` ASC) VISIBLE
+  );
+  
+  CREATE TABLE `recheio_tech`.`fornecedor` (
+  `id_fornecedor` INT NOT NULL,
+  `nome` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`id_fornecedor`),
+  UNIQUE INDEX `id_fornecedor_UNIQUE` (`id_fornecedor` ASC) VISIBLE,
+  UNIQUE INDEX `nome_UNIQUE` (`nome` ASC) VISIBLE
+  );
+  
+  CREATE TABLE `recheio_tech`.`gerente` (
+  `id_gerente` INT NOT NULL,
+  `nome` VARCHAR(45) NOT NULL,
+  `salario` VARCHAR(45) NOT NULL,
+  `cpf` CHAR(11) NOT NULL,
+  PRIMARY KEY (`id_gerente`),
+  UNIQUE INDEX `id_gerente_UNIQUE` (`id_gerente` ASC) VISIBLE,
+  UNIQUE INDEX `cpf_UNIQUE` (`cpf` ASC) VISIBLE
+  );
+  
+  CREATE TABLE `recheio_tech`.`estoque` (
+  `id_estoque` INT NOT NULL,
+  `quantidade` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`id_estoque`),
+  UNIQUE INDEX `quantidade_UNIQUE` (`quantidade` ASC) VISIBLE
+  );
+  
+  ALTER TABLE `recheio_tech`.`pais` 
+ADD CONSTRAINT `fk_funcionario_pais_idx`
+  FOREIGN KEY (`id_pais`)
+  REFERENCES `recheio_tech`.`funcionario` (`id_funcionario`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;
+  
+ALTER TABLE `recheio_tech`.`produto` 
+ADD CONSTRAINT `fk_fornecedor_produto_idx`
+  FOREIGN KEY (`id_produto`)
+  REFERENCES `recheio_tech`.`fornecedor` (`id_fornecedor`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;
+
+ALTER TABLE `recheio_tech`.`fornecedor` 
+ADD CONSTRAINT `fk_fornecedor_gerente_idx`
+  FOREIGN KEY (`id_fornecedor`)
+  REFERENCES `recheio_tech`.`gerente` (`id_gerente`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;
+
+ALTER TABLE `recheio_tech`.`sistema` 
+ADD CONSTRAINT `fk_cliente_sistema_idx`
+  FOREIGN KEY (`id_sistema`)
+  REFERENCES `recheio_tech`.`cliente` (`id_cliente`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;
+
+ALTER TABLE `recheio_tech`.`loja` 
+ADD CONSTRAINT `fk_loja_local_idx`
+  FOREIGN KEY (`id_loja`)
+  REFERENCES `recheio_tech`.`local` (`id_local`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;
+
+ALTER TABLE `recheio_tech`.`vendedor_marketing` 
+ADD CONSTRAINT `fk_vendedor_marketing_sistema_idx`
+  FOREIGN KEY (`id_vendedor_marketing`)
+  REFERENCES `recheio_tech`.`sistema` (`id_sistema`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;
+
+ALTER TABLE `recheio_tech`.`vendedor_marketing` 
+ADD CONSTRAINT `fk_vendedor_marketin_pedido_idx`
+  FOREIGN KEY (`id_vendedor_marketing`)
+  REFERENCES `recheio_tech`.`pedido` (`id_pedido`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;
+
+ALTER TABLE `recheio_tech`.`endereco_local` 
+ADD CONSTRAINT `fk_endereco_local_local1`
+  FOREIGN KEY (`id_endereco_local`)
+  REFERENCES `recheio_tech`.`local` (`id_local`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;
+
+ALTER TABLE `recheio_tech`.`forma_pgto` 
+ADD CONSTRAINT `fk_pedido_forma_pgto_idx`
+  FOREIGN KEY (`id_forma_pgto`)
+  REFERENCES `recheio_tech`.`pedido` (`id_pedido`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;
+
+ALTER TABLE `recheio_tech`.`modo_de_envio` 
+ADD CONSTRAINT `fk_pedido_modo_de_envio_idx`
+  FOREIGN KEY (`id_modo_de_envio`)
+  REFERENCES `recheio_tech`.`pedido` (`id_pedido`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;
+
+ALTER TABLE `recheio_tech`.`produto` 
+ADD CONSTRAINT `fk_salgadeiro_produto_idx`
+  FOREIGN KEY (`id_produto`)
+  REFERENCES `recheio_tech`.`salgadeiro` (`id_salgadeiro`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;
+
+ALTER TABLE `recheio_tech`.`produto` 
+ADD CONSTRAINT `fk_categoria_produto_idx`
+  FOREIGN KEY (`id_produto`)
+  REFERENCES `recheio_tech`.`categoria` (`id_categoria`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;
+
+ALTER TABLE `recheio_tech`.`pedido` 
+ADD CONSTRAINT `fk_pedido_local_idx`
+  FOREIGN KEY (`id_pedido`)
+  REFERENCES `recheio_tech`.`local` (`id_local`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;
+
+ALTER TABLE `recheio_tech`.`funcionario` 
+ADD CONSTRAINT `fk_funcionario_pais_idx`
+  FOREIGN KEY (`id_funcionario`)
+  REFERENCES `recheio_tech`.`pais` (`id_pais`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;
+
+ALTER TABLE `recheio_tech`.`pais` 
+ADD CONSTRAINT `fk_pais_continente_idx`
+  FOREIGN KEY (`id_pais`)
+  REFERENCES `recheio_tech`.`continente` (`id_continente`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION,
+ADD CONSTRAINT `fk_pais_moeda_idx`
+  FOREIGN KEY (`id_pais`)
+  REFERENCES `recheio_tech`.`moeda` (`id_moeda`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION,
+ADD CONSTRAINT `fk_pais_localizacao_idx`
+  FOREIGN KEY (`id_pais`)
+  REFERENCES `recheio_tech`.`localizacao` (`id_localizacao`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;
+  
+  ALTER TABLE `recheio_tech`.`cliente` 
+ADD CONSTRAINT `fk_cliente_pais_idx`
+  FOREIGN KEY (`id_cliente`)
+  REFERENCES `recheio_tech`.`pais` (`id_pais`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;
+
+ALTER TABLE `recheio_tech`.`endereco_cliente` 
+ADD CONSTRAINT `fk_endereco_cliente_idx`
+  FOREIGN KEY (`id_endereco`)
+  REFERENCES `recheio_tech`.`cliente` (`id_cliente`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;
+
+ALTER TABLE `recheio_tech`.`estoque` 
+ADD CONSTRAINT `fk_produto_estoque_idx`
+  FOREIGN KEY (`id_estoque`)
+  REFERENCES `recheio_tech`.`produto` (`id_produto`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;
+
+ALTER TABLE `recheio_tech`.`estoque` 
+ADD CONSTRAINT `fk_gerente_estoque_idx`
+  FOREIGN KEY (`id_estoque`)
+  REFERENCES `recheio_tech`.`gerente` (`id_gerente`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;
+  
+  ALTER TABLE `recheio_tech`.`gerente` 
+ADD CONSTRAINT `fk_gerente_fornecedor_idx`
+  FOREIGN KEY (`id_gerente`)
+  REFERENCES `recheio_tech`.`fornecedor` (`id_fornecedor`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;
+
+ALTER TABLE `recheio_tech`.`catalogo_produto` 
+ADD CONSTRAINT `fk_catalogo_produto_idx`
+  FOREIGN KEY (`id_catalogo_produto`)
+  REFERENCES `recheio_tech`.`fornecedor` (`id_fornecedor`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;
+
+ALTER TABLE `recheio_tech`.`sistema` 
+DROP FOREIGN KEY `fk_cliente_sistema_idx`;
+ALTER TABLE `recheio_tech`.`sistema` 
+ADD CONSTRAINT `fk_sistema_cliente_idx`
+  FOREIGN KEY (`id_sistema`)
+  REFERENCES `recheio_tech`.`cliente` (`id_cliente`);
+
+ALTER TABLE `recheio_tech`.`forma_pgto` 
+DROP FOREIGN KEY `fk_pedido_forma_pgto_idx`;
+ALTER TABLE `recheio_tech`.`forma_pgto` 
+ADD CONSTRAINT `fk_forma_pgto_pedido_idx`
+  FOREIGN KEY (`id_forma_pgto`)
+  REFERENCES `recheio_tech`.`pedido` (`id_pedido`);
+
+
+
